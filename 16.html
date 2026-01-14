@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semantic Tags Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+    }
+    header, nav, section, article, aside, footer {
+      border: 2px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    header {
+      background-color: #f4f4f4;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    nav ul li {
+      display: inline;
+    }
+    main {
+      display: flex;
+      gap: 10px;
+    }
+    article {
+      flex: 3;
+      background-color: #fafafa;
+    }
+    aside {
+      flex: 1;
+      background-color: #f9f9f9;
+    }
+    footer {
+      text-align: center;
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to My Semantic Webpage</h1>
+    <p>This is the header section of the page.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section>
+      <h2>About Semantic Tags</h2>
+      <article>
+        <header>
+          <h3>What Are Semantic Tags?</h3>
+        </header>
+        <p>Semantic tags clearly describe their meaning to both the browser and the developer. Examples include <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, and <code>&lt;article&gt;</code>.</p>
+        <figure>
+          <img src="https://via.placeholder.com/400x200" alt="Example Image">
+          <figcaption>An example of an image inside a figure tag.</figcaption>
+        </figure>
+        <footer>
+          <p>Written by <strong>Devansh</strong> on <time datetime="2025-10-16">October 16, 2025</time>.</p>
+        </footer>
+      </article>
+    </section>
+
+    <aside>
+      <h3>Related Info</h3>
+      <p>This is an aside — it contains information related to the main content.</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Semantic Page | <address>Contact: mailme.devanshkaushik@gmail.com</address></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>QuickWave — Smart Payments (Purple)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple: #6b2fb7;
+    --purple-dark: #4a1f86;
+    --muted:#f4f6fb;
+    --card:#ffffff;
+    --text:#212029;
+    --accent-2:#8b63d6;
+    --max-width:1200px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background:linear-gradient(180deg,#fafbfd 0%, #f1f3fa 100%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  
+  .container{
+    width:100%;
+    max-width:var(--max-width);
+    margin:0 auto;
+    padding:28px;
+  }
+
+  
+  header.site-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:12px 0;
+  }
+  .brand{
+    font-weight:800;
+    color:var(--purple-dark);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+  }
+  .brand .logo {
+    width:36px;height:36px;border-radius:8px;
+    background:linear-gradient(135deg,var(--purple),var(--accent-2));
+    box-shadow:0 6px 18px rgba(107,47,183,0.18);
+    display:inline-block;
+  }
+  nav.primary{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    font-weight:600;
+  }
+  nav.primary a{
+    color:rgba(33,32,41,0.72);
+    text-decoration:none;
+    padding:6px 10px;
+    border-radius:8px;
+  }
+  nav.primary a:hover{background:rgba(75,35,150,0.06)}
+
+  .cta {
+    background:var(--purple);
+    color:white;
+    padding:8px 14px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:700;
+    box-shadow:0 8px 24px rgba(107,47,183,0.12);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .cta:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(107,47,183,0.18) }
+
+  
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 460px;
+    gap:28px;
+    align-items:center;
+    padding:36px 0;
+  }
+  .hero-left h1{
+    margin:0 0 12px;
+    font-size:34px;
+    color:var(--purple-dark);
+    letter-spacing:-0.4px;
+  }
+  .hero-left p.lead{
+    margin:0 0 18px;
+    color:#52525b;
+    max-width:640px;
+    line-height:1.5;
+  }
+  .hero-cta{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .btn-outline{
+    background:transparent;
+    color:var(--purple-dark);
+    padding:10px 18px;
+    border-radius:8px;
+    border:2px solid rgba(75,35,150,0.12);
+    text-decoration:none;
+    font-weight:700;
+    transition:transform .18s ease, background .18s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,var(--purple),var(--accent-2));
+    color:#fff;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:700;
+    box-shadow:0 10px 30px rgba(107,47,183,0.12);
+    transition:transform .18s ease;
+  }
+  .btn-primary:hover{ transform:translateY(-4px) }
+  .hero-right{
+    justify-self:end;
+    position:relative;
+  }
+  .hero-card{
+    background:linear-gradient(180deg,#fff,#fbfbff);
+    border-radius:12px;
+    box-shadow:0 18px 40px rgba(16,24,40,0.06);
+    padding:16px;
+    border:1px solid rgba(79,51,142,0.06);
+  }
+  .hero-image{
+    width:100%;
+    height:220px;
+    border-radius:10px;
+    overflow:hidden;
+    background:linear-gradient(135deg,#fff,#f7f4ff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
+
+  
+  .logos{
+    display:flex;
+    gap:28px;
+    align-items:center;
+    justify-content:center;
+    padding:18px 0;
+    border-top:1px solid rgba(16,24,40,0.04);
+    border-bottom:1px solid rgba(16,24,40,0.04);
+    margin-top:18px;
+  }
+  .logos img{height:28px;opacity:0.85}
+
+  
+  .features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin:30px 0;
+  }
+  .feature-card{
+    background:var(--card);
+    border-radius:12px;
+    padding:18px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(13,20,40,0.04);
+    border:1px solid rgba(16,24,40,0.03);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .feature-card:hover{ transform:translateY(-8px); box-shadow:0 24px 60px rgba(16,24,40,0.08) }
+  .feature-card h3{margin:8px 0;color:var(--purple-dark)}
+  .feature-card p{margin:0;color:#60606a;font-size:14px}
+
+  
+  .how{
+    background:linear-gradient(180deg,#f8f9fd 0%, #f3f5fb 100%);
+    padding:28px;
+    border-radius:12px;
+    margin:28px 0;
+  }
+  .steps{
+    display:flex;
+    gap:18px;
+    justify-content:space-between;
+  }
+  .step{
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    text-align:center;
+    border:1px solid rgba(16,24,40,0.03);
+    flex:1;
+    margin:0 6px;
+    transition:transform .18s ease;
+  }
+  .step:hover{ transform:translateY(-6px) }
+  .step h4{margin:8px 0;color:var(--purple-dark)}
+  .step p{margin:0;color:#60606a;font-size:13px}
+
+  
+  .analytics{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    align-items:center;
+    margin:28px 0;
+  }
+  .chart{
+    background:linear-gradient(180deg,#fff,#fbfbff);
+    height:88px;border-radius:12px;border:1px solid rgba(16,24,40,0.03);
+    box-shadow:0 10px 30px rgba(16,24,40,0.04);
+  }
+
+  
+  .pricing{
+    display:flex;
+    gap:18px;
+    margin:28px 0;
+  }
+  .price-card{
+    flex:1;
+    padding:20px;
+    border-radius:12px;
+    background:white;
+    text-align:center;
+    border:1px solid rgba(16,24,40,0.04);
+    box-shadow:0 8px 24px rgba(16,24,40,0.04);
+    transition:transform .18s ease;
+  }
+  .price-card.popular{ border:2px solid var(--purple); transform:translateY(-6px) }
+  .price-card h3{color:var(--purple-dark); margin-bottom:6px}
+  .price-card .price{ font-size:22px; font-weight:800; margin:8px 0; color:var(--purple) }
+
+  footer.site-footer{
+    margin-top:36px;
+    padding:18px 0;
+    text-align:center;
+    color:#6b6b77;
+    font-size:14px;
+  }
+
+  
+  @media (max-width:980px){
+    .hero{ grid-template-columns: 1fr; }
+    .hero-right{ order:-1; justify-self:center; width:100% }
+    .features{ grid-template-columns:1fr 1fr; }
+    .logos{ gap:14px; flex-wrap:wrap }
+    .analytics{ grid-template-columns: 1fr; }
+    .pricing{ flex-direction:column }
+    .step:hover{ flex-direction:column }
+  }
+  @media (max-width:560px){
+    .features{ grid-template-columns:1fr }
+    nav.primary{ display:none } 
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(18px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+  @keyframes floatSlow {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+  }
+
+  
+  .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in-view{ opacity:1; transform:none; }
+
+  
+  .hero-left.reveal{ transition-delay:0.08s }
+  .hero-right.reveal{ transition-delay:0.22s }
+  .features .feature-card.reveal{ transition-delay:0.14s }
+  .steps .step.reveal{ transition-delay:0.16s }
+  .analytics.reveal{ transition-delay:0.18s }
+  .pricing .price-card.reveal{ transition-delay:0.16s }
+
+  
+  .hero-image{ animation: floatSlow 5s ease-in-out infinite; }
+
+  
+  .muted{ color:#70707a; font-size:14px }
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+
+    <header class="site-header">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"></span>
+        <span>QuickWave</span>
+      </a>
+
+      <nav class="primary" aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#how">How it Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="cta" href="#pricing">Get Started</a>
+    </header>
+
+    
+    <section class="hero">
+      <div class="hero-left reveal">
+        <h1>Payments. Faster. Simpler. Secure.</h1>
+        <p class="lead">QuickWave helps businesses accept payments, manage subscriptions, and view real-time analytics — all from a single dashboard. Built for modern teams who want reliable money flows without the headaches.</p>
+
+        <div class="hero-cta">
+          <a class="btn-primary" href="#pricing">Start Free Trial</a>
+          <a class="btn-outline" href="#how">See Demo</a>
+        </div>
+      </div>
+
+      <div class="hero-right reveal" aria-hidden="false">
+        <div class="hero-card">
+          <div class="hero-image">
+            
+            <img src="laptop.jpg" alt="team working on laptops">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="logos reveal" style="--delay:0.26s">
+      <img src="visa.png" alt="visa">
+      <img src="mastercard.png" alt="mastercard" style="height:22px">
+      <img src="stripe.png" alt="stripe" style="height:22px">
+      <img src="paypal.webp" alt="paypal">
+    </div>
+
+    
+    <section id="features" class="features reveal">
+      <article class="feature-card reveal">
+        <div class="icon" aria-hidden="true" style="font-size:22px; color:var(--purple)">🔒</div>
+        <h3>Secure Transactions</h3>
+        <p>End-to-end encryption, fraud detection and compliance for every payment route.</p>
+      </article>
+
+      <article class="feature-card reveal">
+        <div class="icon" aria-hidden="true" style="font-size:22px; color:var(--purple)">🔗</div>
+        <h3>API Integrations</h3>
+        <p>Connect QuickWave with your tools and automate billing, invoicing, and more.</p>
+      </article>
+
+      <article class="feature-card reveal">
+        <div class="icon" aria-hidden="true" style="font-size:22px; color:var(--purple)">📱</div>
+        <h3>Mobile App</h3>
+        <p>Manage payments and analytics on the go with our lightweight mobile dashboard.</p>
+      </article>
+    </section>
+
+    
+    <section id="how" class="how reveal">
+      <h2 style="text-align:center; color:var(--purple-dark); margin:6px 0 18px">How It Works</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <h4>Sign Up</h4>
+          <p>Create your QuickWave account in minutes and set up your business profile.</p>
+        </div>
+        <div class="step reveal">
+          <h4>Connect Accounts</h4>
+          <p>Link bank and payment accounts securely to start accepting funds.</p>
+        </div>
+        <div class="step reveal">
+          <h4>Start Transacting</h4>
+          <p>Send, receive, and manage payments — subscriptions, invoices, and payouts.</p>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="analytics reveal">
+      <div>
+        <div class="chart" aria-hidden="true" style="margin-bottom:12px"></div>
+        <h3 style="margin:6px 0 4px; color:var(--purple-dark)">Gain Insights with Real-Time Analytics</h3>
+        <p class="muted">Visualize cash flow, monitor transactions, and make data-driven decisions with our analytics dashboard.</p>
+      </div>
+      <div>
+        <h3 style="margin:6px 0 8px; color:var(--purple-dark)">Powerful Features for Modern Businesses</h3>
+        <p class="muted">From fraud protection to developer-friendly APIs, QuickWave gives teams the tools they need to grow payments smoothly.</p>
+        <div style="margin-top:16px; display:flex; gap:8px">
+          <a class="btn-primary" style="padding:10px 16px" href="#pricing">Start Free Trial</a>
+          <a class="btn-outline" style="padding:10px 16px" href="#contact">Contact Sales</a>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="pricing" class="pricing reveal" style="margin-top:10px">
+      <div class="price-card reveal">
+        <h3>Basic</h3>
+        <div class="price">$0<span style="font-size:12px; font-weight:600">/mo</span></div>
+        <p class="muted">Perfect to test QuickWave for small projects.</p>
+        <div style="margin-top:12px"><a class="btn-outline" href="#contact">Get Basic</a></div>
+      </div>
+
+      <div class="price-card popular reveal" aria-hidden="false">
+        <h3>Pro</h3>
+        <div class="price">$29<span style="font-size:12px; font-weight:600">/mo</span></div>
+        <p class="muted">Advanced features for growing teams.</p>
+        <div style="margin-top:12px"><a class="cta" href="#contact">Start Pro</a></div>
+      </div>
+
+      <div class="price-card reveal">
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+        <p class="muted">Tailored plans with dedicated support.</p>
+        <div style="margin-top:12px"><a class="btn-outline" href="#contact">Contact</a></div>
+      </div>
+    </section>
+
+    <footer id="contact" class="site-footer reveal" style="margin-top:40px">
+      <div style="max-width:920px; margin:0 auto; display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap">
+        <div class="muted">© <span id="year"></span> QuickWave — Built with care</div>
+        <div class="muted">Made with HTML & CSS • Purple theme</div>
+      </div>
+    </footer>
+
+  </div>
+
+<script>
+  
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  
+  (function(){
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          
+          entry.target.classList.add('in-view');
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  })();
+</script>
+
+</body>
+</html>
+

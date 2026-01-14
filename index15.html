@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registration Form — Example</title>
+  <style>
+    :root{
+      --bg: #f3f7fb;
+      --card: #ffffff;
+      --accent: #4f46e5; /* indigo */
+      --muted: #6b7280;
+      --success: #10b981;
+      --radius: 12px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg), #e8f0ff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px;
+      color:#111827;
+    }
+
+    /* form card */
+    .card{
+      width:100%;
+      max-width:880px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow: 0 8px 30px rgba(20,24,40,0.08);
+      padding:28px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:24px;
+      align-items:start;
+    }
+
+    /* left: illustration / simple drawn layout */
+    .illustration{
+      padding:12px;
+    }
+
+    .svg-diagram{width:100%; height:auto; display:block}
+    .title{
+      font-size:20px;
+      font-weight:600;
+      margin:0 0 8px 0;
+    }
+    .subtitle{color:var(--muted); margin:0 0 18px 0}
+
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    /* Use a grid for inputs */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+
+    label{
+      font-size:13px;
+      display:block;
+      margin-bottom:6px;
+      color:#0f172a;
+      font-weight:500;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="date"], select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid #e6eef8;
+      background:linear-gradient(180deg,#fff,#fbfdff);
+      box-shadow: 0 1px 0 rgba(16,24,40,0.03) inset;
+      font-size:14px;
+      outline:none;
+      transition:box-shadow .15s ease, border-color .15s ease;
+    }
+
+    input:focus, select:focus{
+      border-color:rgba(79,70,229,0.9);
+      box-shadow:0 6px 20px rgba(79,70,229,0.08);
+    }
+
+    .full{grid-column:1 / -1}
+
+    .row-inline{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .radio-group{display:flex; gap:10px; align-items:center}
+
+    .small{font-size:12px; color:var(--muted)}
+
+    .btn{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:10px;
+      border:none;
+      background:var(--accent);
+      color:white;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow: 0 8px 20px rgba(79,70,229,0.18);
+    }
+
+    .helper{font-size:13px; color:var(--muted); margin-top:6px}
+
+    /* responsive */
+    @media (max-width:880px){
+      .card{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr}
+    }
+
+    /* small decorative footer inside the card */
+    .card-footer{font-size:12px; color:var(--muted); margin-top:6px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="illustration">
+      <h3 class="title">Registration Form Layout</h3>
+      <p class="subtitle">Simple visual layout of the form (left) and the live form (right).</p>
+
+      <!-- Inline SVG drawing the form layout boxes -->
+      <svg class="svg-diagram" viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <style>
+            .box{fill:#ffffff; stroke:#cfe3ff; stroke-width:2; rx:10}
+            .label{font:12px/1.2px 'Inter', sans-serif; fill:#0f172a}
+            .muted{font:11px/1.2px 'Inter', sans-serif; fill:#6b7280}
+          </style>
+        </defs>
+
+        <!-- card -->
+        <rect x="6" y="6" width="408" height="368" rx="14" fill="#f8fbff" stroke="#e1efff"/>
+
+        <!-- header -->
+        <rect class="box" x="16" y="18" width="388" height="44" rx="8"/>
+        <text class="label" x="30" y="46">Account details</text>
+
+        <!-- two-column row -->
+        <rect class="box" x="16" y="72" width="188" height="46" rx="8"/>
+        <text class="muted" x="28" y="101">Full name</text>
+
+        <rect class="box" x="216" y="72" width="188" height="46" rx="8"/>
+        <text class="muted" x="228" y="101">Email</text>
+
+        <!-- second row -->
+        <rect class="box" x="16" y="130" width="188" height="46" rx="8"/>
+        <text class="muted" x="28" y="159">Phone</text>
+
+        <rect class="box" x="216" y="130" width="188" height="46" rx="8"/>
+        <text class="muted" x="228" y="159">Date of birth</text>
+
+        <!-- full width password -->
+        <rect class="box" x="16" y="188" width="388" height="46" rx="8"/>
+        <text class="muted" x="28" y="217">Password &amp; Confirm password (stacked)</text>
+
+        <!-- radio/select/checkbox area -->
+        <rect class="box" x="16" y="246" width="268" height="64" rx="8"/>
+        <text class="muted" x="28" y="273">Gender (radio) / Country (select)</text>
+
+        <rect class="box" x="296" y="246" width="108" height="64" rx="8"/>
+        <text class="muted" x="304" y="275">Terms</text>
+
+        <!-- submit -->
+        <rect class="box" x="16" y="320" width="388" height="42" rx="10"/>
+        <text class="label" x="180" y="347">Submit</text>
+      </svg>
+
+      <p class="card-footer">This drawing shows the visual order and grouping of inputs — two-column rows at top, a full-width password row, and the controls grouped near the bottom.</p>
+    </div>
+
+    <div>
+      <h3 class="title">Register</h3>
+      <p class="subtitle">Fill in your details to create an account.</p>
+
+      <form id="regForm" autocomplete="on" novalidate>
+        <div class="grid">
+          <div>
+            <label for="fullname">Full name</label>
+            <input id="fullname" name="fullname" type="text" placeholder="Anita Sharma" required />
+          </div>
+
+          <div>
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" />
+          </div>
+
+          <div>
+            <label for="dob">Date of birth</label>
+            <input id="dob" name="dob" type="date" />
+          </div>
+
+          <div class="full">
+            <label for="country">Country</label>
+            <select id="country" name="country">
+              <option value="">Select country</option>
+              <option>India</option>
+              <option>United States</option>
+              <option>United Kingdom</option>
+              <option>Australia</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Create a password" required />
+          </div>
+
+          <div>
+            <label for="confirm">Confirm password</label>
+            <input id="confirm" name="confirm" type="password" placeholder="Re-enter password" required />
+          </div>
+        </div>
+
+        <div style="margin-top:6px">
+          <label class="small">Gender</label>
+          <div class="radio-group" role="radiogroup" aria-label="Gender selection">
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+            <label><input type="radio" name="gender" value="other"> Other</label>
+          </div>
+        </div>
+
+        <div class="row-inline" style="margin-top:8px;">
+          <label style="display:flex; align-items:center; gap:8px;"><input type="checkbox" id="terms" name="terms"> I agree to the <a href="#">terms</a></label>
+        </div>
+
+        <div>
+          <button class="btn" type="submit">Create account</button>
+          <p class="helper">We'll never share your details. Password must be at least 8 characters.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // small client-side validation for the passwords
+    document.getElementById('regForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const pw = document.getElementById('password').value;
+      const cpw = document.getElementById('confirm').value;
+      const terms = document.getElementById('terms').checked;
+
+      if(pw.length < 8){
+        alert('Password must be at least 8 characters long.');
+        return;
+      }
+      if(pw !== cpw){
+        alert('Passwords do not match.');
+        return;
+      }
+      if(!terms){
+        alert('Please agree to the terms.');
+        return;
+      }
+
+      // pretend to submit
+      alert('Registration successful (demo).');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

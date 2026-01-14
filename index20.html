@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My Portfolio</title>
+
+<!-- Google font (optional) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --blue:#1856b3;
+    --blue-dark:#0f3f88;
+    --muted:#f3f4f6;
+    --card-border:#d7dce6;
+    --text:#333;
+    --max-width:980px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:#111; /* page "frame" (like black border in picture) */
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* center page content and create white inner page */
+  .page-frame{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:18px 0;
+  }
+  .page{
+    width:100%;
+    max-width:var(--max-width);
+    background:#f6f7f8; /* light page background */
+    border-left:8px solid #0b213a;
+    border-right:8px solid #0b213a;
+    box-shadow:0 0 0 6px #0b213a inset;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  /* Header */
+  header.topbar{
+    background:var(--blue);
+    color:white;
+    text-align:center;
+    padding:10px 0;
+    position:relative;
+  }
+  .topbar .title{
+    font-weight:700;
+    font-size:22px;
+    margin:0;
+    letter-spacing:0.6px;
+  }
+  nav.nav{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    margin-top:6px;
+    font-weight:600;
+    font-size:14px;
+  }
+  nav.nav a{color:rgba(255,255,255,0.95); text-decoration:none}
+
+  /* content container */
+  main{
+    padding:22px;
+  }
+
+  /* Section title */
+  .section-title{
+    text-align:center;
+    font-weight:700;
+    margin:8px 0 18px;
+    color:#222;
+  }
+
+  /* About */
+  .about{
+    padding:14px 24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    border-bottom:2px solid #d7d7d7;
+    background:transparent;
+  }
+  .avatar{
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    overflow:hidden;
+    display:block;
+    border:14px solid rgba(255,255,255,0.6);
+    box-shadow:0 12px 0 rgba(0,0,0,0.05), 0 0 0 6px rgba(14,60,120,0.06) inset;
+    background:linear-gradient(180deg, #e7f0ff, #cfe0ff);
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+  .about p.lead{
+    max-width:760px;
+    text-align:center;
+    margin:10px 0 0;
+    color:#666;
+    font-size:14px;
+  }
+
+  /* Skills table style */
+  .skills-section{
+    padding:26px 24px;
+    border-top:1px solid #cfcfcf;
+    border-bottom:1px solid #cfcfcf;
+  }
+  .skills-wrap{
+    display:flex;
+    justify-content:center;
+  }
+  table.skills{
+    border-collapse:collapse;
+    width:520px;
+    max-width:95%;
+    text-align:center;
+    font-size:14px;
+  }
+  table.skills th, table.skills td{
+    border:2px solid var(--blue);
+    padding:10px 12px;
+  }
+  table.skills thead th{
+    background:var(--blue);
+    color:white;
+    font-weight:700;
+  }
+  table.skills tbody td{
+    background:white;
+    color:#333;
+  }
+
+  /* Projects */
+  .projects{
+    padding:28px 24px;
+    border-top:1px solid #d8d8d8;
+    border-bottom:1px solid #d8d8d8;
+  }
+  .project-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    align-items:center;
+  }
+  .project-card{
+    width:640px;
+    max-width:95%;
+    background:white;
+    padding:18px;
+    border-radius:8px;
+    box-shadow:0 3px 0 rgba(0,0,0,0.04);
+    border:1px solid rgba(0,0,0,0.04);
+    text-align:center;
+  }
+  .project-card h4{margin:0 0 8px; font-size:15px}
+  .project-card p{margin:0;color:#666;font-size:13px}
+
+  /* Contact form area */
+  .contact{
+    padding:26px;
+  }
+  .contact .contact-box{
+    width:720px;
+    max-width:95%;
+    margin:0 auto;
+    border:2px solid var(--blue);
+    background:transparent;
+    padding:8px;
+  }
+  .contact form{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    row-gap:10px;
+    column-gap:14px;
+    align-items:center;
+    padding:10px;
+    background:white;
+  }
+  .contact label{font-size:14px; padding-left:8px; font-weight:600}
+  .contact input[type="text"],
+  .contact input[type="email"],
+  .contact textarea{
+    width:100%;
+    padding:8px 10px;
+    border:1px solid #bfc7d6;
+    border-radius:3px;
+    font-size:14px;
+    resize:vertical;
+    min-height:36px;
+  }
+  .contact textarea{min-height:80px; padding-top:8px}
+  .contact .btn-row{
+    grid-column:1 / -1;
+    display:flex;
+    justify-content:center;
+    padding:12px 0 8px;
+  }
+  .btn{
+    background:var(--blue);
+    color:white;
+    border:none;
+    padding:10px 36px;
+    border-radius:6px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 2px 0 rgba(0,0,0,0.06);
+  }
+
+  /* footer area with back to top */
+  footer.footer{
+    background:var(--blue);
+    color:white;
+    padding:10px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .footer .left{font-weight:600}
+  .back-top{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    background:var(--blue-dark);
+    color:white;
+    border-radius:8px;
+    padding:8px 12px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+    text-decoration:none;
+    font: weight 500px;
+    font-size:13px;
+  }
+
+  /* small screens */
+  @media (max-width:640px){
+    .avatar{width:200px;height:200px}
+    table.skills{width:100%}
+    .contact form{grid-template-columns: 1fr}
+    .contact label{text-align:left}
+    .contact .btn-row{padding-top:6px}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-frame" id="top">
+  <div class="page" role="document">
+
+    <!-- Header -->
+    <header class="topbar" role="banner">
+      <h1 class="title">My Portfolio</h1>
+      <nav class="nav" role="navigation" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      
+      <section id="about" class="about" aria-labelledby="about-heading">
+        <h2 id="about-heading" class="section-title">About Me</h2>
+
+        <figure class="avatar" aria-hidden="false">
+          
+          <img src="DE.jpg"
+               alt="Profile avatar">
+        </figure>
+
+        <p class="lead">
+          Hello! My name is Devansh Kaushik. I am learning web development and this is my first portfolio website.
+          I am a student of KR Mangalam University and my course is Btech CSE AI & ML and I want to be a data analyst in the future.
+        </p>
+      </section>
+
+      
+      <section id="skills" class="skills-section" aria-labelledby="skills-heading">
+        <h2 id="skills-heading" class="section-title">My Skills</h2>
+
+        <div class="skills-wrap">
+          <table class="skills" role="table" aria-label="Skills table">
+            <thead>
+              <tr>
+                <th scope="col">Skill</th>
+                <th scope="col">Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>HTML</td><td>Beginner</td></tr>
+              <tr><td>CSS</td><td>Beginner</td></tr>
+              <tr><td>JavaScript</td><td>Learning</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      
+      <section id="projects" class="projects" aria-labelledby="projects-heading">
+        <h2 id="projects-heading" class="section-title">My Projects</h2>
+
+        <div class="project-list">
+          <article class="project-card">
+            <h4>Project 1</h4>
+            <p>Making a web page about my first blog</p>
+          </article>
+
+          <article class="project-card">
+            <h4>Project 2</h4>
+            <p>Telling about the seven wonders of the world and their origin</p>
+          </article>
+        </div>
+      </section>
+
+      
+      <section id="contact" class="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" class="section-title">Contact Me</h2>
+
+        <div class="contact-box" role="region" aria-label="Contact form">
+          <form onsubmit="event.preventDefault(); alert('This form is demo-only. Replace with your mail/send logic.');" aria-describedby="contact-desc">
+            <label for="name">Name:</label>
+            <input id="name" type="text" placeholder="Enter your name" required>
+
+            <label for="email">Email:</label>
+            <input id="email" type="email" placeholder="Enter your email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" placeholder="Write your message" required></textarea>
+
+            <div class="btn-row">
+              <button class="btn" type="submit">Send</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+  
+    <footer class="footer" role="contentinfo">
+      <div class="left">© <span id="year"></span> My Portfolio</div>
+      <div class="right">Made with HTML &amp; CSS</div>
+    </footer>
+
+    
+    <a class="back-top" href="#top">↑ Back to Top</a>
+
+  </div>
+
