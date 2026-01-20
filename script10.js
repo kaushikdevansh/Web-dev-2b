@@ -12,12 +12,16 @@
 // console.log(arr2 ,)
 
 //Q - 2)
-let arr3 = [1 , 2 , 3 , 4 , 5]
-let sum = 0
-for(let i = 0; i<=arr3.length;i++){
-    sum = sum + arr3[i];
-}
-console.log(sum)
+// let arr3 = [1 , 2 , 3 , 4 , 5]
+// let sum = 0
+// for(let i = 0; i<=arr3.length;i++){
+//     sum = sum + arr3[i];
+// }
+// console.log(sum)
+
+//types of functions
+
+
 
 
 
