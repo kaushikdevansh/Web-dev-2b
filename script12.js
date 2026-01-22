@@ -18,7 +18,3 @@
 
 // let date = new Date();
 // console.log(date)
-
-(function(){
-    console.log("IIFE");
-})()
