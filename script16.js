@@ -22,13 +22,13 @@
 //     }
 // }
 
-//task 5
-const section=document.getElementById("content");
-const task5=section.querySelectorAll("p");
+ //task 5
+// const section=document.getElementById("content");
+// const task5=section.querySelectorAll("p");
 
-for(let i=0;i<task5.length;i++){
-    task5[i].style.color="purple"
-}
+// for(let i=0;i<task5.length;i++){
+//     task5[i].style.color="purple"
+// }
 
 
 
